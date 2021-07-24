@@ -30,7 +30,7 @@ class App extends Component {
     this.setState({
       js:e
     });
-  }
+}
   onChangec(e)
   {
     this.setState({
@@ -38,23 +38,28 @@ class App extends Component {
     });
   }
   render() {
+    const doc="<html><body>"+this.state.html+"</body>"+
+    "<style>"+this.state.css+"</style>"+
+    "<script>"+this.state.js+"</script></html>";
   return (
     <div>
       <div style={{position: "relative",
-      left: "100px",
-      top: 10,
-      width:500
+      left: "1.5vw",
+      top: "0.5vh",
+      width:"30vw"
       }}>
-      <center><h1>HTML</h1></center>
+      <center><h3>HTML</h3></center>
       <AceEditor
       style={{
-        border: "3px solid #73AD21"
+        border: "0.25vh solid #73AD21",
+        width: "30vw",
+        height: "50vh"
       }}
   placeholder="ASSUME YOU ARE WRITING IN BODY DIRECTLY"
   mode="html"
   theme="monokai"
   onChange={this.onChangeh}
-  fontSize={20}
+  fontSize={14}
   showGutter={true}
   highlightActiveLine={true}
   setOptions={{
@@ -66,20 +71,22 @@ class App extends Component {
   }}/>
     </div>
     <div style={{position: "absolute",
-      left: "700px",
-      top: 10,
-      width:500
+      left: "33.5vw",
+      top: "0.5vh",
+      width:"30vw"
       }}>
-        <center><h1>CSS</h1></center>
+        <center><h3>CSS</h3></center>
 <AceEditor
       style={{
-        border: "3px solid #73AD21"
+        border: "0.25vh solid #73AD21",
+        width: "30vw",
+        height: "50vh"
       }}
       onChange={this.onChangec}
   placeholder="ASSUME YOU ARE WRITING IN STYLE DIRECTLY"
   mode="css"
   theme="solarized_dark"
-  fontSize={20}
+  fontSize={14}
   showGutter={true}
   highlightActiveLine={true}
   setOptions={{
@@ -91,20 +98,22 @@ class App extends Component {
   }}/>
     </div>
     <div style={{position: "absolute",
-      left: "1300px",
-      top: 10,
-      width:500
+      left: "65.5vw",
+      top: "0.5vh",
+      width:"30vw"
       }}>
-        <center><h1>JS</h1></center>
+        <center><h3>JS</h3></center>
 <AceEditor
       style={{
-        border: "3px solid #73AD21"
+        border: "0.25vh solid #73AD21",
+        width: "30vw",
+        height: "50vh"
       }}
       onChange={this.onChangej}
   placeholder="ASSUME YOU ARE WRITING IN SCRIPT DIRECTLY"
   mode="javascript"
   theme="terminal"
-  fontSize={20}
+  fontSize={14}
   showGutter={true}
   highlightActiveLine={true}
   setOptions={{
@@ -116,12 +125,15 @@ class App extends Component {
   }}/>
     </div>
     <div
-    style={{position: "relative",
-    left: "10px",
+    style={{position: "absolute",
+    top:"60vh",
+    left: "1vw",
+    right:"1vw"
     }}>
-    <center><h1>PREVIEW</h1></center>
-    <div dangerouslySetInnerHTML={{__html: this.state.html+"<style>"+this.state.css+"</style>"}}>
-    </div>
+    <center><h3>PREVIEW</h3></center>
+    <iframe
+    srcdoc={doc}
+    width="100%" ></iframe>
     </div>
     </div>
   );

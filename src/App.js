@@ -7,32 +7,62 @@ import 'ace-builds/src-noconflict/theme-terminal'
 import 'ace-builds/src-noconflict/theme-solarized_dark'
 import "ace-builds/src-noconflict/ext-language_tools";
 import React, { Component } from 'react';
+var h,c,j;
 class App extends Component {
   constructor(props) {
     super(props);
     this.onChangeh=this.onChangeh.bind(this);
     this.onChangec=this.onChangec.bind(this);
     this.onChangej=this.onChangej.bind(this);
+    this.onLoadh=this. onLoadh.bind(this);
+    this.onLoadc=this. onLoadc.bind(this);
+    this.onLoadj=this. onLoadj.bind(this);
+    if(localStorage["19BIT0292html"]==undefined)
+    h=``;
+    else
+    h=localStorage["19BIT0292html"];
+    if(localStorage["19BIT0292css"]==undefined)
+    c=``;
+    else
+    c=localStorage["19BIT0292css"];
+    if(localStorage["19BIT0292js"]==undefined)
+    j=``;
+    else
+    j=localStorage["19BIT0292js"];
     this.state={
-      html:``,
-      css:``,
-      js:``
+      html:h,
+      css:c,
+      js:j
     }
+  }
+  onLoadh(e){
+    e.setValue(this.state.html);
+  }
+  onLoadc(e)
+  {
+    e.setValue(this.state.css);
+  }
+  onLoadj(e)
+  {
+    e.setValue(this.state.js);
   }
   onChangeh(e)
   {
+    localStorage["19BIT0292html"]=e;
     this.setState({
       html:e
     });
   }
   onChangej(e)
   {
+    localStorage["19BIT0292js"]=e;
     this.setState({
       js:e
     });
 }
   onChangec(e)
   {
+    localStorage["19BIT0292css"]=e;
     this.setState({
       css:e
     });
@@ -55,6 +85,7 @@ class App extends Component {
         width: "30vw",
         height: "50vh"
       }}
+      onLoad={this.onLoadh}
   placeholder="ASSUME YOU ARE WRITING IN BODY DIRECTLY"
   mode="html"
   theme="monokai"
@@ -82,6 +113,7 @@ class App extends Component {
         width: "30vw",
         height: "50vh"
       }}
+      onLoad={this.onLoadc}
       onChange={this.onChangec}
   placeholder="ASSUME YOU ARE WRITING IN STYLE DIRECTLY"
   mode="css"
@@ -109,6 +141,7 @@ class App extends Component {
         width: "30vw",
         height: "50vh"
       }}
+      onLoad={this.onLoadj}
       onChange={this.onChangej}
   placeholder="ASSUME YOU ARE WRITING IN SCRIPT DIRECTLY"
   mode="javascript"

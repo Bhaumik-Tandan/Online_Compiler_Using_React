@@ -1,4 +1,5 @@
 import AceEditor from 'react-ace';
+import Post from "./post"
 import 'ace-builds/src-noconflict/mode-html'
 import 'ace-builds/src-noconflict/mode-css'
 import 'ace-builds/src-noconflict/mode-javascript'
@@ -73,6 +74,7 @@ class App extends Component {
     "<script>"+this.state.js+"</script></html>";
   return (
     <div>
+      <Post/>
       <div style={{position: "relative",
       left: "1.5vw",
       top: "0.5vh",

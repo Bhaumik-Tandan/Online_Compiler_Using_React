@@ -69,7 +69,7 @@ class App extends Component {
       "<script>" + this.state.js + "</script></html>";
     return (
       <div>
-        <Post />
+        <Post doc={doc} />
         <div style={{
           position: "absolute",
           left: "2.5vw",
